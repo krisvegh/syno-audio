@@ -1,47 +1,37 @@
 import * as React from 'react';
-import styled  from 'styled-components'
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
+import { bindActionCreators, Dispatch } from 'redux';
+import { loginAction, setInputVal } from '../actions/loginActions';
+import Login, { ILoginProps } from '../components/Login';
+import { IAppstate } from '../store/IAppstate.interface';
 
-const Wrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`;
+export interface ILoginContainerProps extends RouteComponentProps<any> {}
 
-const InputArea = styled.div`
-  padding: 10px;
-  align-self: center;
-  justify-self: center;
-  width: 320px;
-  height: 300px;
-  background-color: #fff;
-  border-radius: 10px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  box-sizing: border-box;
-`;
+const LoginContainer = (props: ILoginProps) => <Login {...props} />;
 
-const InputField = styled.input`
-  width: 80%;
-  height: 30px;
-  margin: 10px;
-`;
+const mapStateToProps = (state: IAppstate) => ({
+  loading: state.login.loading,
+  password: state.login.password,
+  serverURL: state.login.serverURL,
+  username: state.login.username
+});
 
-class LoginPage extends React.Component {
-  public render() {
-    return (
-      <Wrapper>
-        <InputArea>
-          <InputField/>
-          <InputField/>
-          <InputField/>
-        </InputArea>
-      </Wrapper>
-    )
-  }
-}
+const mapDispatchToProps = (
+  dispatch: Dispatch,
+  ownProps: ILoginContainerProps
+) =>
+  bindActionCreators(
+    {
+      login() {
+        return loginAction(ownProps);
+      },
+      setInputVal
+    },
+    dispatch
+  );
 
-export default LoginPage;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginContainer);
