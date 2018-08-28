@@ -47,7 +47,7 @@ const Button = styled.button`
   }
 `;
 
-export declare interface ILoginProps extends RouteComponentProps<any> {
+export interface ILoginProps extends RouteComponentProps<any> {
   username: string;
   serverURL: string;
   password: string;

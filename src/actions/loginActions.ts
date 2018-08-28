@@ -19,6 +19,11 @@ export const setLoading = (payload: boolean) => ({
   type: 'LOGIN_SET_LOADING'
 });
 
+export const setSynoToken = (payload: boolean) => ({
+  payload,
+  type: 'LOGIN_SET_SYNO_TOKEN'
+});
+
 export const loginAction = (props: ILoginContainerProps) => async (
   dispatch: Dispatch,
   getState: () => IAppstate
@@ -37,9 +42,11 @@ export const loginAction = (props: ILoginContainerProps) => async (
     },
     method: 'POST'
   });
-  const { success } = resp;
+  const { success, SynoToken } = resp;
   if (!success) {
     return;
   }
+  dispatch(setSynoToken(SynoToken));
+  localStorage.setItem('synoToken', SynoToken);
   props.history.push('/player');
 };
