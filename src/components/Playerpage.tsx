@@ -1,17 +1,31 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { IPlayerPageProps } from 'src/interfaces/playerPage.interfaces';
+import styled from 'styled-components';
+import colors from '../style/color-variables';
 
-export interface IPlayerPageProps extends RouteComponentProps<any> {
-  isFolderListLoading: boolean;
-  fetchFolders: (props: IPlayerPageProps) => void;
-}
+const PageWrapper = styled.div`
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  padding: 0px 10px;
+`;
+
+const Header = styled.div`
+  height: 70px;
+  width: 100%;
+  background-color: ${colors.$GREY3};
+`;
 
 class PlayerPage extends React.Component<IPlayerPageProps> {
   public componentWillMount() {
     this.props.fetchFolders(this.props);
   }
   public render() {
-    return <p> This is the Playerpage</p>;
+    return (
+      <PageWrapper>
+        <Header />
+      </PageWrapper>
+    );
   }
 }
 

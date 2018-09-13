@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { IPlayerPageProps } from 'src/components/Playerpage';
+import { IPlayerPageProps } from 'src/interfaces/playerPage.interfaces';
 import { IAppstate } from 'src/store/IAppstate.interface';
 import { convertToFormdata } from 'src/utils/synoLogin';
 

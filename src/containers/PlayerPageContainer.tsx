@@ -2,7 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { fetchFolders } from 'src/actions/playerPageActions';
-import PlayerPage, { IPlayerPageProps } from '../components/Playerpage';
+import { IPlayerPageProps } from 'src/interfaces/playerPage.interfaces';
+import PlayerPage from '../components/Playerpage';
 import { IAppstate } from '../store/IAppstate.interface';
 
 export interface IPlayerPageContainerProps
