@@ -3,20 +3,16 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { fetchFolders } from 'src/actions/playerPageActions';
 import { IPlayerProps } from 'src/interfaces/player.interfaces';
-import PlayerPage from '../components/Playerpage';
+import Player from '../components/Player';
 import { IAppstate } from '../store/IAppstate.interface';
 
 export interface IPlayerContainerProps
   extends RouteComponentProps<any>,
     IPlayerProps {}
 
-const playerContainer = (props: IPlayerContainerProps) => (
-  <PlayerPage {...props} />
-);
+const playerContainer = (props: IPlayerContainerProps) => <Player {...props} />;
 
-const mapStateToProps = (state: IAppstate) => ({
-  isFolderListLoading: state.player.isFolderListLoading
-});
+const mapStateToProps = (state: IAppstate) => ({});
 
 export default connect(
   mapStateToProps,

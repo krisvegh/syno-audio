@@ -1,9 +1,6 @@
 import { AnyAction } from 'redux';
-import { IPlayerState } from '../interfaces/player.interfaces';
 
-const initState: IPlayerState = {
-  isFolderListLoading: false
-};
+const initState = {};
 
 const player = (state = initState, action: AnyAction) => {
   switch (action.type) {
