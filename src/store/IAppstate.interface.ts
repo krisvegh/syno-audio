@@ -1,7 +1,7 @@
-import { IPlayerPageState } from 'src/interfaces/playerPage.interfaces';
+import { IPlayerState } from 'src/interfaces/player.interfaces';
 import { ILoginState } from '../reducers/loginreducer';
 
 export declare interface IAppstate {
   login: ILoginState;
-  playerPage: IPlayerPageState;
+  player: IPlayerState;
 }

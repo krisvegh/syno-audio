@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { IPlayerPageProps } from 'src/interfaces/playerPage.interfaces';
+import { IPlayerProps } from 'src/interfaces/player.interfaces';
 import { IAppstate } from 'src/store/IAppstate.interface';
 import { convertToFormdata } from 'src/utils/synoLogin';
 
@@ -13,7 +13,7 @@ export const populateFoldersList = (payload: any) => ({
   type: 'PLAYER_POPULATE_FOLDERS_LIST'
 });
 
-export const fetchFolders = (props: IPlayerPageProps) => async (
+export const fetchFolders = (props: IPlayerProps) => async (
   dispatch: Dispatch,
   getState: () => IAppstate
 ) => {

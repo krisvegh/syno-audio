@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPlayerPageProps } from 'src/interfaces/playerPage.interfaces';
+import { IPlayerProps } from 'src/interfaces/player.interfaces';
 import styled from 'styled-components';
 import colors from '../style/color-variables';
 
@@ -16,7 +16,7 @@ const Header = styled.div`
   background-color: ${colors.$GREY3};
 `;
 
-class PlayerPage extends React.Component<IPlayerPageProps> {
+class Player extends React.Component<IPlayerProps> {
   public componentWillMount() {
     this.props.fetchFolders(this.props);
   }
@@ -29,4 +29,4 @@ class PlayerPage extends React.Component<IPlayerPageProps> {
   }
 }
 
-export default PlayerPage;
+export default Player;

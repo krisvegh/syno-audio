@@ -3,8 +3,9 @@ import './App.css';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import Authguard from 'src/components/Authguard';
 import LoginContainer from './containers/LoginContainer';
-import PlayerPageContainer from './containers/PlayerPageContainer';
+import PlayerContainer from './containers/PlayerContainer';
 import store from './store/configureStore';
 
 class App extends React.Component {
@@ -14,10 +15,10 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact={true} path="/login" component={LoginContainer} />
-            <Route
+            <Authguard
               exact={true}
               path="/player"
-              component={PlayerPageContainer}
+              component={PlayerContainer}
             />
             <Redirect exact={true} from="*" to="/login" />
           </Switch>

@@ -1,6 +1,5 @@
 import { ILoginState } from 'src/reducers/loginreducer';
 import { convertToFormdata } from './synoLogin';
-// export const isLoggedIn =
 
 export const APIlogIn = async (login: ILoginState) => {
   const resp = await fetch(`/webman/login.cgi?enable_syno_token=yes`, {
@@ -15,6 +14,13 @@ export const APIlogIn = async (login: ILoginState) => {
       Cookie: 'stay_login=1;'
     },
     method: 'POST'
+  });
+  return resp.json();
+};
+
+export const checkToken = async () => {
+  const resp = await fetch('/webman/login.cgi', {
+    method: 'GET'
   });
   return resp.json();
 };
