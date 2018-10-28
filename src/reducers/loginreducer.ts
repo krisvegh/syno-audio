@@ -1,4 +1,5 @@
 import { AnyAction } from 'redux';
+import { ILoginState } from './../interfaces/login.interfaces';
 
 const initState: ILoginState = {
   loading: false,
@@ -7,14 +8,6 @@ const initState: ILoginState = {
   synoToken: '',
   username: ''
 };
-
-export interface ILoginState {
-  password: string;
-  serverURL: string;
-  username: string;
-  loading: boolean;
-  synoToken: string;
-}
 
 const loginReducer = (state = initState, action: AnyAction) => {
   switch (action.type) {

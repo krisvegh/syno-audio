@@ -1,13 +1,14 @@
 import * as React from 'react';
+import BrowserContainer from 'src/containers/BrowserContainer';
 import { IPlayerProps } from 'src/interfaces/player.interfaces';
 import styled from 'styled-components';
 import colors from '../style/color-variables';
 
 const PageWrapper = styled.div`
   width: 100%;
-  max-width: 1600px;
   display: flex;
   padding: 0px 10px;
+  flex-direction: column;
 `;
 
 const Header = styled.div`
@@ -17,13 +18,11 @@ const Header = styled.div`
 `;
 
 class Player extends React.Component<IPlayerProps> {
-  public componentWillMount() {
-    this.props.fetchFolders(this.props);
-  }
   public render() {
     return (
       <PageWrapper>
         <Header />
+        <BrowserContainer />
       </PageWrapper>
     );
   }

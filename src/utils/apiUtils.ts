@@ -1,4 +1,4 @@
-import { ILoginState } from 'src/reducers/loginreducer';
+import { ILoginState } from 'src/interfaces/login.interfaces';
 import { convertToFormdata } from './synoLogin';
 
 export const APIlogIn = async (login: ILoginState) => {

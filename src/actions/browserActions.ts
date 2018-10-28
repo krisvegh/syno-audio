@@ -1,23 +1,30 @@
 import { Dispatch } from 'redux';
+import { createAction } from 'src/actions/createAction';
+import { IFolder } from 'src/interfaces/folders.interfaces';
 import { IPlayerProps } from 'src/interfaces/player.interfaces';
 import { IAppstate } from 'src/store/IAppstate.interface';
 import { convertToFormdata } from 'src/utils/synoLogin';
+import { ActionsUnion } from './createAction';
 
-export const setPlayerListLoading = (payload: boolean) => ({
-  payload,
-  type: 'PLAYER_SET_LIST_LOADING'
-});
+export const SET_STATE = '[BROWSER] SET_STATE';
+export const POPULATE_FOLDER_LIST = '[BROWSER] POPULATE_FOLDER_LIST';
 
-export const populateFoldersList = (payload: any) => ({
-  payload,
-  type: 'PLAYER_POPULATE_FOLDERS_LIST'
-});
+export const actions = {
+  populateFoldersList: (list: IFolder[]) =>
+    createAction(POPULATE_FOLDER_LIST, list),
+
+  setBrowserState: (state: 'loading' | 'ready') =>
+    createAction(SET_STATE, state)
+};
+
+export const setBrowserState = (state: string) =>
+  createAction(SET_STATE, state);
 
 export const fetchFolders = (props: IPlayerProps) => async (
   dispatch: Dispatch,
   getState: () => IAppstate
 ) => {
-  dispatch(setPlayerListLoading(true));
+  dispatch(setBrowserState('loading'));
   const { login } = getState();
   const resp = await fetch('/webapi/AudioStation/folder.cgi', {
     body: convertToFormdata({
@@ -37,8 +44,11 @@ export const fetchFolders = (props: IPlayerProps) => async (
     method: 'POST'
   });
   const { data, error } = await resp.json();
+  dispatch(setBrowserState('ready'));
   console.log(data, error);
   if (error) {
     props.history.push('login');
   }
 };
+
+export type Actions = ActionsUnion<typeof actions>;
