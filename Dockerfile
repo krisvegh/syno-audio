@@ -1,12 +1,8 @@
 # Build the dev image
 FROM node:10 AS dev
-
 RUN mkdir -p /srv
-
 WORKDIR /srv
-
 ADD package*.json ./
-
 RUN npm install && npm cache clean --force
 
 # Add required file
