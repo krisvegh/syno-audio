@@ -20,10 +20,12 @@ const Header = styled.div`
 class Player extends React.Component<IPlayerProps> {
   public render() {
     return (
-      <PageWrapper>
+      <React.Fragment>
         <Header />
-        <BrowserContainer />
-      </PageWrapper>
+        <PageWrapper>
+          <BrowserContainer />
+        </PageWrapper>
+      </React.Fragment>
     );
   }
 }

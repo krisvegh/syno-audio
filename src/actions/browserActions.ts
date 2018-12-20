@@ -17,14 +17,11 @@ export const actions = {
     createAction(SET_STATE, state)
 };
 
-export const setBrowserState = (state: string) =>
-  createAction(SET_STATE, state);
-
 export const fetchFolders = (props: IPlayerProps) => async (
   dispatch: Dispatch,
   getState: () => IAppstate
 ) => {
-  dispatch(setBrowserState('loading'));
+  dispatch(actions.setBrowserState('loading'));
   const { login } = getState();
   const resp = await fetch('/webapi/AudioStation/folder.cgi', {
     body: convertToFormdata({
@@ -44,8 +41,9 @@ export const fetchFolders = (props: IPlayerProps) => async (
     method: 'POST'
   });
   const { data, error } = await resp.json();
-  dispatch(setBrowserState('ready'));
-  console.log(data, error);
+  dispatch(actions.setBrowserState('ready'));
+  dispatch(actions.populateFoldersList(data.items));
+  console.log(data);
   if (error) {
     props.history.push('login');
   }

@@ -7,6 +7,11 @@ body,
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  overflow: hidden;
+}
+
+div {
+  box-sizing: border-box;
 }
 
 body {

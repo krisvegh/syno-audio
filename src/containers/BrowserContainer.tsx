@@ -11,7 +11,9 @@ export interface IBrowserContainerProps
 
 const BrowserContainer = (props: any) => <Browser {...props} />;
 
-const mapStateToProps = (state: IAppstate) => ({});
+const mapStateToProps = (state: IAppstate) => ({
+  list: state.browser.list
+});
 
 export default connect(
   mapStateToProps,
