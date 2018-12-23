@@ -1,7 +1,9 @@
 import { ILoginState } from 'src/interfaces/login.interfaces';
+import { setCookie } from './cookies';
 import { convertToFormdata } from './synoLogin';
 
 export const APIlogIn = async (login: ILoginState) => {
+  setCookie('serverUrl', login.serverURL, 1);
   const resp = await fetch(`/webman/login.cgi?enable_syno_token=yes`, {
     body: convertToFormdata({
       enable_device_token: 'no',
@@ -10,8 +12,7 @@ export const APIlogIn = async (login: ILoginState) => {
       username: login.username
     }),
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Cookie: 'stay_login=1;'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     method: 'POST'
   });

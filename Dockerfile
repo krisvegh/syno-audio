@@ -18,6 +18,6 @@ EXPOSE 3000
 #
 # Build production image
 #
-FROM nginx:1.13 as prod
+FROM nginx:1.14 as prod
 COPY --from=dev /srv/build/ /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
