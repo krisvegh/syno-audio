@@ -1,5 +1,5 @@
 # Build the dev image
-FROM node:10 AS dev
+FROM circleci/node AS dev
 RUN mkdir -p /srv
 WORKDIR /srv
 ADD package*.json ./
