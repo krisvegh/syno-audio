@@ -20,5 +20,5 @@ jobs:
       - checkout
 
       - run:
-        name: Building image
-        command: docker build -t wood1y/syno-audio:prod .
+          name: Building image
+          command: docker build -t wood1y/syno-audio:prod .
