@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: syno-audio
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        editor: vscode
+    spec:
+      containers:
+        - name: syno-audio
+          image: wood1y/syno-audio:dev
