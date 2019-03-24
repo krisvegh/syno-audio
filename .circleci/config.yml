@@ -21,4 +21,4 @@ jobs:
 
       - run:
         name: Building image
-        commans: docker build -t wood1y/syno-audio:prod .
+        command: docker build -t wood1y/syno-audio:prod .
