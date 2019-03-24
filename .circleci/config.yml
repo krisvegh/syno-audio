@@ -5,7 +5,8 @@
 version: 2
 jobs:
   build:
-    docker_layer_caching: true
+    machine:
+      docker_layer_caching: true
     docker:
       # specify the version you desire here
       - image: wood1y/syno-audio:prod
