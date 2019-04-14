@@ -20,4 +20,5 @@ EXPOSE 3000
 #
 FROM nginx:1.14 as prod
 COPY --from=dev /srv/build/ /usr/share/nginx/html
-COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx-custom.conf ./
+CMD envsubst "`printf '${%s} ' $(bash -c "compgen -A variable")`" < ./nginx-custom.conf > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'

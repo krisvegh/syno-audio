@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -it -v ${PWD}:/srv -v ${PWD}/nginx-custom.conf:/etc/nginx/conf.d/default.conf -p 80:80 wood1y/syno-audio:prod
+docker run -it -e PORT=8080 -p 80:8080 wood1y/syno-audio:prod
