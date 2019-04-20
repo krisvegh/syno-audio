@@ -13,7 +13,7 @@ jobs:
     docker:
       - image: buildpack-deps:trusty
     steps: 
-      - chechkout
+      - checkout
       - run:
         name: Installing Heroku cli
         command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
