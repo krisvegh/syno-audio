@@ -11,20 +11,29 @@ jobs:
     steps: 
       - checkout
       - setup_remote_docker
-      # - run:
-      #     name: Installing Heroku cli
-      #     command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-      # - run:
-      #     name: Heroku login
-      #     command: bash .circleci/setup-heroku.sh
+        docker_layer_caching: true
       - run:
-          name: Building image
-          command: docker build -t wood1y/syno-audio:prod .
+          name: Installing Heroku cli
+          command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      - run:
+          name: Heroku login
+          command: bash .circleci/setup-heroku.sh
       - run:
           name: Pushing image to Heroku registry
-          command: docker tag wood1y/syno-audio:prod registry.heroku.com/syno-audio/web
+          command: heroku container:push web -a syno-audio
       - run:
           name: Deploying
-          command: docker push registry.heroku.com/syno-audio/web
+          command: heroku container:release web -a syno-audio
+
+
+      # - run:
+      #     name: Building image
+      #     command: docker build -t wood1y/syno-audio:prod .
+      # - run:
+      #     name: Pushing image to Heroku registry
+      #     command: docker tag wood1y/syno-audio:prod registry.heroku.com/syno-audio/web
+      # - run:
+      #     name: Deploying
+      #     command: docker push registry.heroku.com/syno-audio/web
 
 
