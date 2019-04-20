@@ -1,10 +1,5 @@
 version: 2
 jobs:
-  # build:
-    # docker:
-    #   - image: circleci/node
-    # steps:
-    #   - checkout
   build:
     docker:
       - image: circleci/node
@@ -16,7 +11,7 @@ jobs:
           name: Installing Heroku cli
           command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
       - run:
-          name: Heroku login
+          name: Setting up Heroku CLI credentials
           command: bash .circleci/setup-heroku.sh
       - run:
           name: Heroku login
@@ -24,19 +19,11 @@ jobs:
       - run:
           name: Pushing image to Heroku registry
           command: heroku container:push web -a syno-audio
+  deploy:
+    steps:
       - run:
           name: Deploying
           command: heroku container:release web -a syno-audio
 
-
-      # - run:
-      #     name: Building image
-      #     command: docker build -t wood1y/syno-audio:prod .
-      # - run:
-      #     name: Pushing image to Heroku registry
-      #     command: docker tag wood1y/syno-audio:prod registry.heroku.com/syno-audio/web
-      # - run:
-      #     name: Deploying
-      #     command: docker push registry.heroku.com/syno-audio/web
 
 
