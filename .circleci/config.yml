@@ -18,6 +18,8 @@ jobs:
       - run:
           name: Heroku login
           command: bash .circleci/setup-heroku.sh
+      - run:
+          name: Heroku login
           command: heroku container:login
       - run:
           name: Pushing image to Heroku registry
