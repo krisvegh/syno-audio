@@ -15,13 +15,13 @@ jobs:
     steps: 
       - checkout
       - run:
-        name: Installing Heroku cli
-        command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+          name: Installing Heroku cli
+          command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
       - run:
-        name: Heroku login
-        command: bash .circleci/setup-heroku.sh
+          name: Heroku login
+          command: bash .circleci/setup-heroku.sh
       - run:
-        name: Deploying to Heroku
-        command: |
-          heroku apps
+          name: Deploying to Heroku
+          command: |
+            heroku apps
 
