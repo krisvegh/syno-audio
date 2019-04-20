@@ -1,7 +1,6 @@
 version: 2
 jobs:
-  build:
-    ...
+  # build:
     # docker:
     #   - image: circleci/node
     # steps:
@@ -10,7 +9,7 @@ jobs:
     #   - run:
     #       name: Building image
     #       command: docker build -t wood1y/syno-audio:prod .
-  deploy:
+  build:
     docker:
       - image: buildpack-deps:trusty
     steps: 
