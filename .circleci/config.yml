@@ -1,11 +1,26 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node
-    steps:
-      - checkout
-      - setup_remote_docker
+    # docker:
+    #   - image: circleci/node
+    # steps:
+    #   - checkout
+    #   - setup_remote_docker
+    #   - run:
+    #       name: Building image
+    #       command: docker build -t wood1y/syno-audio:prod .
+  deploy:
+    image: buildpack-deps:trusty
+    steps: 
+      - chechkout
       - run:
-          name: Building image
-          command: docker build -t wood1y/syno-audio:prod .
+        name: Installing Heroku cli
+        command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      - run
+        name: Heroku login
+        command: bash .circleci/setup-heroku.sh
+      - run:
+        name: Deploying to Heroku
+        command: |
+          heroku apps
+
