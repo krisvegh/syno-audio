@@ -21,7 +21,9 @@ jobs:
           name: Heroku login
           command: bash .circleci/setup-heroku.sh
       - run:
-          name: Deploying to Heroku
-          command: |
-            heroku apps
+          name: Pushing image to Heroku registry
+          command: heroku container:push web -a syno-audio
+      - run:
+          name: Deploying
+          command: heroku container:release web -a syno-audio
 
