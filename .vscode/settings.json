@@ -4,5 +4,6 @@
   "eslint.enable": true,
   "[javascript]": {
     "editor.formatOnSave": false
-  }
+  },
+  "docker.defaultRegistryPath": "wood1y"
 }
