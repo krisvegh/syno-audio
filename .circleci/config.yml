@@ -20,6 +20,7 @@ jobs:
           name: Pushing image to Heroku registry
           command: heroku container:push web -a syno-audio
   deploy:
+    machine: true
     steps:
       - run:
           name: Deploying
