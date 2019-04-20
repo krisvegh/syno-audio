@@ -10,7 +10,8 @@ jobs:
     #       name: Building image
     #       command: docker build -t wood1y/syno-audio:prod .
   deploy:
-    image: buildpack-deps:trusty
+    docker:
+      - image: buildpack-deps:trusty
     steps: 
       - chechkout
       - run:
