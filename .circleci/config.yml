@@ -22,8 +22,9 @@ jobs:
           command: bash .circleci/setup-heroku.sh
       - run:
           name: Pushing image to Heroku registry
-          command: heroku container:push web -a syno-audio
+          command: docker tag syno-audio registry.heroku.com/<app>/web
       - run:
           name: Deploying
-          command: heroku container:release web -a syno-audio
+          command: docker push registry.heroku.com/<app>/web
+
 
