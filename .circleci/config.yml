@@ -11,7 +11,7 @@ jobs:
     #       command: docker build -t wood1y/syno-audio:prod .
   build:
     docker:
-      - image: buildpack-deps:trusty
+      - image: circleci/node
     steps: 
       - checkout
       - run:
