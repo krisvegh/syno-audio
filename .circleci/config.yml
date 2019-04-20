@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/node
+        # auth:
+        #   username: wood1y
+        #   password: $DOCKERHUB_PASSWORD
     steps: 
       - checkout
       - setup_remote_docker:
@@ -16,12 +19,18 @@ jobs:
       - run:
           name: Heroku login
           command: heroku container:login
+      # - run:
+      #     name: Pushing image to Heroku registry
+      #     command: heroku container:push web -a syno-audio
       - run:
-          name: Pushing image to Heroku registry
-          command: heroku container:push web -a syno-audio
-  deploy:
-    machine: true
-    steps:
+          name: Building image
+          command: docker build -t wood1y/syno-audio:prod .
+      - run:
+          name: Adding tag
+          command: docker tag wood1y/syno-audio:prod registry.heroku.com/syno-audio/web
+      - run:
+          name: Pushing image to heroku registry
+          command: docker push registry.heroku.com/syno-audio/web
       - run:
           name: Deploying
           command: heroku container:release web -a syno-audio
