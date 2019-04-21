@@ -79,7 +79,7 @@ class Login extends React.Component<ILoginProps> {
               type="password"
             />
             <Button disabled={this.props.loading} onClick={this.props.login}>
-              Log in
+              Log inn
             </Button>
           </form>
         </InputArea>
